@@ -4,7 +4,7 @@ class DATABASE_CONFIG {
 	var $default = array(
 		'driver' => 'mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '185.10.51.80',
 		'login' => 'dwivoqfb_aap',
 		'password' => 'grootjecms',
 		'database' => 'dwivoqfb_quaestor',
