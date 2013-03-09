@@ -1239,3 +1239,5 @@
 2013-01-01 22:15:06 Debug: Notice (8): Undefined index: credit in [C:\wamp\www\qs\app\controllers\components\phpexcel\run\kolombalans.php, line 65]
 2013-01-01 22:15:28 Debug: Notice (8): Undefined index: credit in [C:\wamp\www\qs\app\controllers\components\phpexcel\run\kolombalans.php, line 43]
 2013-01-01 22:15:28 Debug: Notice (8): Undefined index: credit in [C:\wamp\www\qs\app\controllers\components\phpexcel\run\kolombalans.php, line 65]
+2013-03-09 10:20:46 Debug: Notice (8): Undefined index: posten in [C:\wamp\www\qs-finance\app\views\balans\kolombalans.ctp, line 53]
+2013-03-09 10:20:47 Debug: Notice (8): Undefined index: posten in [C:\wamp\www\qs-finance\app\views\balans\kolombalans.ctp, line 59]

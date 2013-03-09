@@ -340,3 +340,5 @@ Aco: Buildacls/build in [C:\wamp\www\website\cake\libs\controller\components\acl
 2012-09-10 17:28:47 Warning: Warning (2): include(phpexcel/run/readkwartaal.php) [<a href='http://php.net/function.include'>function.include</a>]: failed to open stream: No such file or directory in [C:\wamp\www\qs\app\controllers\components\excel.php, line 4]
 2012-09-10 17:28:47 Warning: Warning (2): include() [<a href='http://php.net/function.include'>function.include</a>]: Failed opening 'phpexcel/run/readkwartaal.php' for inclusion (include_path='C:\wamp\www\qs;C:\wamp\www\qs\app\;.;C:\php\pear') in [C:\wamp\www\qs\app\controllers\components\excel.php, line 4]
 2012-09-12 20:33:32 Warning: Warning (2): Missing argument 2 for GrootboeksController::open() in [C:\wamp\www\qs\app\controllers\grootboeks_controller.php, line 70]
+2013-03-09 10:20:46 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\qs-finance\app\views\balans\kolombalans.ctp, line 53]
+2013-03-09 10:20:47 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\qs-finance\app\views\balans\kolombalans.ctp, line 59]

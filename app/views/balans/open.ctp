@@ -8,8 +8,8 @@
 					echo $this->Balans->balansRij($a, $balans['Bookyear']['omschrijving']);			
 				}
 				echo '<tr>';
-				echo '<td>TOTAAL</td>';
-				echo '<td class="geld">'.$this->Balans->currency($balans['debet']['totaal']).'</td>';
+				echo '<td><strong>TOTAAL</strong></td>';
+				echo '<td class="geld"><strong>'.$this->Balans->currency($balans['debet']['totaal']).'</strong></td>';
 				echo '</tr>';	
 			?>				
 		</table>
@@ -29,8 +29,8 @@
 				}
 				
 				echo '<tr>';
-				echo '<td>TOTAAL</td>';
-				echo '<td class="geld">'.$this->Balans->currency($balans['credit']['totaal']).'</td>';
+				echo '<td><strong>TOTAAL</strong></td>';
+				echo '<td class="geld"><strong>'.$this->Balans->currency($balans['credit']['totaal']).'</strong></td>';
 				echo '</tr>';	
 			?>	
 		</table>
