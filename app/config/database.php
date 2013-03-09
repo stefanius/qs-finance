@@ -7,7 +7,7 @@ class DATABASE_CONFIG {
 		'host' => '185.10.51.80',
 		'login' => 'dwivoqfb_aap',
 		'password' => 'grootjecms',
-		'database' => 'dwivoqfb_quaestor',
+		'database' => 'dev_qsfinance',
 	);
 
 /*
