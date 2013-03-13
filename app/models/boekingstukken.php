@@ -71,3 +71,4 @@ class Boekingstukken extends AppModel {
 		return $nieuwe_stukken;
 	}
 }
+?>

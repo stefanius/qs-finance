@@ -1,6 +1,5 @@
 <?php
 class CalculationsController extends AppController {
-
 	var $name = 'Calculations';
 	var $helpers = array('Form', 'Html', 'Number',  'Balans');
 	var $components = array('Excel');
@@ -276,7 +275,7 @@ class CalculationsController extends AppController {
 		if(isset($bookyear)){
 			$balansposten = $this->selectsaldi($bookyear, 0);//0=balansposten
 			$this->Excel->exportbalans($balansposten);
-			$this->Session->setFlash(__('Excelsheet Geëxporteerd'));
+			$this->Session->setFlash(__('Excelsheet Geï¿½xporteerd'));
 			exit;
 		}else{
 			$this->Session->setFlash(__('Boekjaar Onbekend'));
@@ -287,7 +286,7 @@ class CalculationsController extends AppController {
 		if(isset($bookyear)){
 			$kolommen = $this->select_kolomen_balans($bookyear);
 			$this->Excel->exportkolombalans($kolommen);
-			$this->Session->setFlash(__('Excelsheet Geëxporteerd'));
+			$this->Session->setFlash(__('Excelsheet Geï¿½xporteerd'));
 			exit;
 		}else{
 			$this->Session->setFlash(__('Boekjaar Onbekend'));

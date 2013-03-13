@@ -60,8 +60,10 @@ class Balans extends AppModel {
 		$kolombalans['winstverlies'] = $this->berekenbalans($resultaatposten, $bookyear);
 		$kolombalans['winstverlies']['debet']['posten'][9999999999] = "BLAAT"; //een leeg debet item.
 		$kolombalans['eindbalans'] = $this->berekenbalans($balansposten, $bookyear);
+                $kolombalans['posten']['balans'] =$balansposten;
+                $kolombalans['posten']['resultaat'] =$resultaatposten;
 		
-		//$kolombalans['beginbalans']['ev'] = $kolombalans['beginbalans']['debet']['totaal'] - $kolombalans['beginbalans']['credit']['totaal'];
+		//$kolombalans['beginbaans']['ev'] = $kolombalans['beginbalans']['debet']['totaal'] - $kolombalans['beginbalans']['credit']['totaal'];
 		//$kolombalans['saldibalans']['ev'] = $kolombalans['saldibalans']['Bedrag']['debet'] - $kolombalans['saldibalans']['Bedrag']['credit'];
 		//$kolombalans['eindbalans']['ev'] = $kolombalans['eindbalans']['debet']['totaal'] - $kolombalans['eindbalans']['debet']['totaal'];
 		//$kolombalans['proefbalans']['ev'] = $kolombalans['proefbalans']['Bedrag']['debet'] - $kolombalans['proefbalans']['Bedrag']['credit'];

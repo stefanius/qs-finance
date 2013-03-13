@@ -20,10 +20,11 @@ class Download
 
 	public function download($filename='file'){
 		$objPHPExcel = $this->objPHPExcel;
-		header("Content-Type: application/vnd.ms-excel; charset=utf-8");
-		header("Content-Disposition: attachment; filename=\"".$filename.".xls\"");
+		//header("Content-Type: application/vnd.ms-excel; charset=utf-8");
+                ob_end_clean();
+		header("Content-Disposition: attachment; filename=\"".$filename.".xlsx\"");
 		header("Cache-Control: max-age=0");
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$objWriter->save("php://output");		
 	}	
 }

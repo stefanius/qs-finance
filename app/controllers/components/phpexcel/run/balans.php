@@ -21,7 +21,7 @@ class ExcelBalans
 	}
 	
 	function dorun($data){
-		$this->init();
+            $this->init();
 		
 		$objReader = $this->objReader;
 		$objPHPExcel = $this->objPHPExcel;
@@ -63,7 +63,8 @@ class ExcelBalans
 		$total = $total+4;
 		$objPHPExcel->getActiveSheet()->setCellValue('G'.$total, 'TOTAAL');
 		$objPHPExcel->getActiveSheet()->setCellValue('J'.$total, $data['credit']['totaal']);
-		$objPHPExcel->getActiveSheet()->removeRow($baseRow-1,1);		
+		$objPHPExcel->getActiveSheet()->removeRow($baseRow-1,1);	
+           	
 		
 		$downloader = new Download($objReader, $objPHPExcel);
 		$downloader->download('balans_'.$data['Bookyear']['omschrijving']);

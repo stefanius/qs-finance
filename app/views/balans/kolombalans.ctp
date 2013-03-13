@@ -1,5 +1,4 @@
 <table>
-
 <?php
 
 //print_r( $kolombalans['proefbalans']['credit']);
@@ -66,5 +65,4 @@
 	//echo $this->Balans->toKolomBalansRij2($balanspost['Grootboek'], $balans);
 			
 ?>
-
 </table>

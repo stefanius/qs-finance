@@ -46,3 +46,4 @@ class Schema extends AppModel {
 	}
 	
 }
+?>

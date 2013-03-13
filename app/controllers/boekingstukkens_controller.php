@@ -68,3 +68,4 @@ class BoekingstukkensController extends AppController {
 		$this->Boekingstukken->create_new_stukken($bookyear_id);
 	}
 }
+?>
