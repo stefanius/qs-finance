@@ -149,7 +149,7 @@ class ExcelKolom
 		$objPHPExcel->setActiveSheetIndex(0);
 
 		$downloader = new Download($objReader, $objPHPExcel);
-		$downloader->download();
+		$downloader->download('aap');
 	}
 	
 	function write_row($objPHPExcel, $rek, $rowNo, $data){
@@ -173,19 +173,24 @@ class ExcelKolom
             }else{
                 $zijde=$rek['Grootboek']['debetcredit'];
                 $reknr = $rek['Grootboek']['nummer'];
-		$objPHPExcel->setActiveSheetIndex(0)
-					->setCellValue('B'.$rowNo, '#'.$rek['Grootboek']['nummer'])
-					->setCellValue('C'.$rowNo, $rek['Grootboek']['omschrijving'])
-					->setCellValue('D'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet'])
-					->setCellValue('E'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit'])
-					->setCellValue('F'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet'])
-					->setCellValue('G'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit'])
-					->setCellValue('H'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['debet'])
-					->setCellValue('I'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['credit'])
-					->setCellValue('J'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['debet'])
- 					->setCellValue('K'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['credit'])
-					->setCellValue('L'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet'])
-					->setCellValue('M'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$rowNo, '#'.$rek['Grootboek']['nummer']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$rowNo, $rek['Grootboek']['omschrijving']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                
+                if(array_key_exists($reknr, $data['winstverlies'][$zijde]['posten'])){
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                }
+                if(array_key_exists($reknr, $data['eindbalans'][$zijde]['posten'])){
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                }
+                                        
             }		
 		
 		$objPHPExcel->setActiveSheetIndex(0)->getStyle('A'.$rowNo.':N'.$rowNo)->getFont()->setSize(8);					
