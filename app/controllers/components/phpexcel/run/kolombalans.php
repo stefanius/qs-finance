@@ -10,7 +10,7 @@ class ExcelKolom
 	var $downloader;
 	
 	function init(){
-		error_reporting(E_ALL);
+		//error_reporting(E_ALL);
 		date_default_timezone_set('Europe/Amsterdam');
 		$this->phpexcelCake = new PhpexcelCake();
 		$this->setup = $this->phpexcelCake->get();
