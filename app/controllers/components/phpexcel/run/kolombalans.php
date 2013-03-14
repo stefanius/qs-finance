@@ -175,13 +175,20 @@ class ExcelKolom
                 $reknr = $rek['Grootboek']['nummer'];
 		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$rowNo, '#'.$rek['Grootboek']['nummer']);
 		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$rowNo, $rek['Grootboek']['omschrijving']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
-		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
-                
+
+
+                if(array_key_exists($reknr, $data['beginbalans'][$zijde]['posten'])){
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                }   
+                if(array_key_exists($reknr, $data['proefbalans'][$zijde]['posten'])){
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$rowNo, $data['proefbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                }          
+                if(array_key_exists($reknr, $data['saldibalans'][$zijde]['posten'])){
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$rowNo, $data['saldibalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
+                }                
                 if(array_key_exists($reknr, $data['winstverlies'][$zijde]['posten'])){
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$rowNo, $data['winstverlies'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
