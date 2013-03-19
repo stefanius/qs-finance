@@ -121,6 +121,7 @@ class ExcelKolom
 
 		foreach($data['posten']['resultaat'] as $rek){
 			$this->write_row($objPHPExcel, $rek, $rowNo, $data);
+                        $objPHPExcel->setActiveSheetIndex(0)->getStyle('D'.$rowNo.':M'.$rowNo)->getNumberFormat()->setFormatCode('##,##0.00');
 			$rowNo++;
 		}		
 		//Tel alles bij elkaar op
@@ -137,8 +138,9 @@ class ExcelKolom
 					->setCellValue('K'.$rowNo, '=SUM(K'.$FIRST_CALC_ROW.':K'.($rowNo-1).')')
 					->setCellValue('L'.$rowNo, '=SUM(L'.$FIRST_CALC_ROW.':L'.($rowNo-1).')')
 					->setCellValue('M'.$rowNo, '=SUM(M'.$FIRST_CALC_ROW.':M'.($rowNo-1).')');
-					
-					
+                
+		$objPHPExcel->setActiveSheetIndex(0)->getStyle('A'.$rowNo.':N'.$rowNo)->getFont()->setSize(9);			
+		$objPHPExcel->setActiveSheetIndex(0)->getStyle('D'.$rowNo.':M'.$rowNo)->getNumberFormat()->setFormatCode('##,##0.00');			
 		$objPHPExcel->getActiveSheet()->getStyle('B'.$rowNo.':M'.$rowNo)->applyFromArray(
 			array('borders' => array('top'	=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM))));
 		
@@ -159,23 +161,17 @@ class ExcelKolom
             if($rek==='ev'){
  		$objPHPExcel->setActiveSheetIndex(0)
 					->setCellValue('B'.$rowNo, '#')
-					->setCellValue('C'.$rowNo, 'Eigen Vermogen')
-					->setCellValue('D'.$rowNo, $data['beginbalans']['ev'])
-					->setCellValue('E'.$rowNo, $data['beginbalans']['ev'])
-					->setCellValue('F'.$rowNo, $data['proefbalans']['ev'])
-					->setCellValue('G'.$rowNo, $data['proefbalans']['ev'])
-					->setCellValue('H'.$rowNo, $data['saldibalans']['ev'])
-					->setCellValue('I'.$rowNo, $data['saldibalans']['ev'])
-					->setCellValue('J'.$rowNo, $data['winstverlies']['ev'])
- 					->setCellValue('K'.$rowNo, $data['winstverlies']['ev'])
-					->setCellValue('L'.$rowNo, $data['eindbalans']['ev'])
+					->setCellValue('C'.$rowNo, 'Eigen Vermogen')					
+					->setCellValue('E'.$rowNo, $data['beginbalans']['ev'])					
+					->setCellValue('G'.$rowNo, $data['proefbalans']['ev'])					
+					->setCellValue('I'.$rowNo, $data['saldibalans']['ev'])					
+ 					->setCellValue('K'.$rowNo, $data['winstverlies']['ev'])					
 					->setCellValue('M'.$rowNo, $data['eindbalans']['ev']);               
             }else{
                 $zijde=$rek['Grootboek']['debetcredit'];
                 $reknr = $rek['Grootboek']['nummer'];
 		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$rowNo, '#'.$rek['Grootboek']['nummer']);
 		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$rowNo, $rek['Grootboek']['omschrijving']);
-
 
                 if(array_key_exists($reknr, $data['beginbalans'][$zijde]['posten'])){
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$rowNo, $data['beginbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
@@ -196,14 +192,15 @@ class ExcelKolom
                 if(array_key_exists($reknr, $data['eindbalans'][$zijde]['posten'])){
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['debet']);
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$rowNo, $data['eindbalans'][$zijde]['posten'][$reknr]['Bedrag']['credit']);
-                }
-                                        
-            }		
+                }                                        
+            }
+            
+            $objPHPExcel->setActiveSheetIndex(0)->getStyle('D'.$rowNo.':M'.$rowNo)->getNumberFormat()->setFormatCode('##,##0.00');
 		
-		$objPHPExcel->setActiveSheetIndex(0)->getStyle('A'.$rowNo.':N'.$rowNo)->getFont()->setSize(8);					
-		$objPHPExcel->setActiveSheetIndex(0)->getStyle('D'.$rowNo.':M'.$rowNo)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+            $objPHPExcel->setActiveSheetIndex(0)->getStyle('A'.$rowNo.':N'.$rowNo)->getFont()->setSize(8);					
+            $objPHPExcel->setActiveSheetIndex(0)->getStyle('D'.$rowNo.':M'.$rowNo)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 					
-		$objPHPExcel->getActiveSheet()->getStyle('B'.$rowNo.':M'.$rowNo)->applyFromArray(
+            $objPHPExcel->getActiveSheet()->getStyle('B'.$rowNo.':M'.$rowNo)->applyFromArray(
 			array('fill' 	=> array(
 										'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
 										'color'		=> array('argb' => 'FFFFFF')
